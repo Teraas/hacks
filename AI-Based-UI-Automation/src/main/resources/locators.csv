@@ -1,0 +1,4 @@
+id,class,text,content_desc,resource_id,hierarchy_depth,locator_type,is_visible,is_target,is_dynamic
+search_box,android.widget.EditText,Search for items,,com.amazon:id/search_box,2,id,1,1,0
+cart_button,android.widget.Button,,Cart Button,com.amazon:id/cart_button,2,id,1,1,0
+dynamic_btn,android.widget.Button,Buy Now,,button_%d,2,xpath,1,1,1
