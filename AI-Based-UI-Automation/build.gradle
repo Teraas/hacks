@@ -7,8 +7,13 @@ plugins {
 group = 'org.gojek'
 version = '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
+mavenCentral()
+maven {
+    url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    mavenContent {
+        snapshotsOnly() // Ensures only snapshot versions are fetched
+    }
+}
 }
 
 dependencies {
@@ -17,14 +22,16 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 //    implementation 'org.tensorflow:tensorflow:1.15.0'
 //    implementation 'org.tensorflow:tensorflow-core-platform:0.3.3'
-    implementation ('org.deeplearning4j:deeplearning4j-core:1.0.0-M2.1'){
+    implementation ('org.deeplearning4j:deeplearning4j-core:1.0.0-M1.1'){
         exclude group: 'org.bytedeco', module: 'opencv-platform'
         exclude group: 'org.bytedeco', module: 'leptonica-platform'
         exclude group: 'org.bytedeco', module: 'hdf5-platform'
     }
     //implementation 'org.nd4j:nd4j-native-platform:1.0.0-M2.1:macosx-arm64'
-    implementation 'org.nd4j:nd4j-native-platform:1.0.0-M1.1'
-    implementation group: 'org.nd4j', name: 'nd4j-native-platform', version: '1.0.0-M1.1'
+    implementation ('org.nd4j:nd4j-native-platform:1.0.0-beta4'){
+        exclude group: 'org.nd4j', module: 'nd4j-native'
+    }
+    implementation group: 'org.nd4j', name: 'nd4j-native', version: '1.0.0-beta4'
     //implementation group: 'org.nd4j', name: 'nd4j-native', version: '1.0.0-M2', classifier:'macosx-arm64'
 
 }
